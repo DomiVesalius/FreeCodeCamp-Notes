@@ -19,7 +19,7 @@ To create a heading, choose the appropriate heading tag and do the following:
 <h6>textGoesHere</h6>
 ```
 
-# Paragraphs
+## Paragraphs
 
 You can also use paragraph elements (p) for paragraph sentences. It's syntax is just like the header tags; an opening and closing tag.
 
