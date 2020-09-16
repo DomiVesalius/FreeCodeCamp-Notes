@@ -73,3 +73,114 @@ This is another property we can change using CSS selectors. It is used in the sa
 ```
 
 Now every element with the blue-text class will be blue, have a font size of 30 px, and the font style of sans-serif.
+
+## Import a Google Font
+Sometimes we want to use different fonts for our website. We can do this by importing the font into our html document.
+Google has a free library of web fonts [Google Fonts](https://fonts.google.com).
+To import a google font, copy the fonts URL from the library and paste it into your HTML at the top of the page using a link tag.
+
+For example, we will import the Lobster Font.
+```html
+<!--
+Importing the lobster font.
+-->
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+<main>
+    <h1>Website Title</h1>
+    <p>Some example text</p>
+</main>
+```
+
+We can use element selectors in order to actually apply the font to the element we wish:
+
+```html
+<style>
+    h2 {
+        font-family: Lobster;
+    }
+</style>
+```
+
+Now all h2 elements will use the Lobster font.
+
+## Specify How Fonts Should Degrade
+Sometimes browsers will not have the font style you want your html to use so we pick how the fonts should degrade.
+This means that if your first choice of font isn't available, then the CSS will use your second choice of font style.
+
+Degrading goes like this:
+
+```html
+<style>
+    h2 {
+        font-family: Lobster, monospace;
+    }
+</style>
+```
+
+Now if the Lobster font is unavailable, the monospace font will be used.
+
+## Size Your Images
+Selectors have the ``width`` property that allows us to adjust the width of images using the px (pixel) measurement.
+To do this, make a style sheet as normal and for the image you want to adjust, create a new class with the property of width and a value assigned to it.
+
+```html
+<style>
+    .larger-image {
+        width: 500px;
+    }
+</style>
+```
+
+## Add Borders Around Your Elements
+We can also adjust the borders of images using border classes and their properties. Such properties include border-color, border-width, and border-styles.
+
+```html
+<style>
+    .thin-red-border {
+        border-color: red;
+        border-width: 5px;
+        border-style: solid;
+    }
+</style>
+```
+
+Now if were to apply this to an element, it would take on these properties.
+
+## Add Rounded Corners
+Borders also have the border-radius property which we can change.
+
+```html
+<style>
+    .thin-red-border {
+        border-color: red;
+        border-width: 5px;
+        border-style: solid;
+        border-radius: 3px;
+    }
+</style>
+```
+
+We can also use percentages when changing the border-radius property:
+
+```html
+<style>
+    .thin-red-border {
+        border-color: red;
+        border-width: 5px;
+        border-style: solid;
+        border-radius: 50%;
+    }
+</style>
+```
+
+## Give Background Color
+This is another property of style sheets which you can add. An example would be:
+
+```html
+<style>
+    .green-background {
+        background-color: green;
+        }
+</style>
+```
