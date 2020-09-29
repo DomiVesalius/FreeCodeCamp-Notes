@@ -184,3 +184,305 @@ This is another property of style sheets which you can add. An example would be:
         }
 </style>
 ```
+
+## Set the ID of an Element
+HTML elements can have ids which you can use as selectors for styling. It is convention to have every id attribute be unique (don't give more than one element the same id).
+Here is an example of giving an id to an element:
+
+```html
+<h2 id="unique-identifier">Hello World</h2>
+```
+
+## Using ID Attributes to Style an Element
+Now that we have given an id to an element, we can make changes to the style that element takes on within our style sheet:
+
+```html
+<style>
+    #one {
+        background-color: green;
+        color: blue
+    }
+</style>
+
+<h2 id='one'>Hello World</h2>
+```
+
+The h2 element will have a green background color and its font will be blue.
+You should note that ids have higher precedence than classes.
+
+## Adjust the Padding of an Element
+There are three important properties that control the space around each element: Padding, Border, and Margin
+
+**Padding:**
+Controls the amount of space between the elements content and its border. Increasing the padding means creating more space between the content and border. 
+You can adjust any of the following: padding (constant for all sides), padding-right, padding-left, padding-top, padding-bottom.
+
+```html
+<style>
+    .blue-box {
+        padding: 10px;
+    }
+</style>
+```
+
+## Adjust the Margin of an Element
+An elements margins control the amount of space between its border and surrounding elements. You can adjust any of the following: margin (constant for all sides), margin-bottom, margin-top, margin-right, margin-left.
+
+```html
+<style>
+    .blue-box {
+        padding: 10px;
+        margin: 3px;
+    }
+</style>
+```
+
+This example only shows constant margins but you can change any of the previously listed margins.
+If you set an elements margin to a negative value, the element will grow larger.
+
+## Use Clockwise Notation to Specify the Padding or Margin of an Element
+This is a faster way of adjusting specific margins (bottom/top, right/left). Using clockwise notation allows you to declare these all in one line like:
+
+```html
+<style>
+    .blue-box {
+        padding: <padding-top-size> <padding-right-size> <padding-bottom-size> <padding-left-size>;
+        margin: <margin-top-size> <margin-right-size> <margin-bottom-size> <margin-left-size>;
+    }
+</style>
+```
+
+You would have to specify the sizes obviously.
+
+## Use Attribute Selectors to Style Elements
+Previously we have been adding ``class`` and ``id`` attributes to elements we want to specifically style. These are class and id selectors. There are also other types of selectors we can use to style elements. 
+``[attr=value]`` selectors can be given a specific attribute and its corresponding value to be used in style sheets.
+
+For example, if we wanted to style all elements with the type attribute with the value of radio, we would do so as follows:
+
+```html
+<style>
+    [type="radio"] {
+        margin: 20px, 30px, 40px, 50px;
+    }
+</style>
+```
+
+Similarly we can do this for all elements of type 'checkbox' etc.
+
+## Understand Absolute vs Relative Units
+We have primarily been using px units as a form of measurement for a lot of our css properties. There are other length units as well.
+
+The two main types of units are absolute and relative units. 
+
+Absolute: Physical units of length; in (inches), mm (millimeters)
+Relative: Units (em or rem) which are relative to another length value. Example: em is based on the size of an elements font. Setting the font-size property using em, it is relative to the parent font-size
+
+```html
+<style>
+    [type="radio"] {
+        margin: 1.5em;
+    }
+</style>
+```
+
+## Style the HTML Body Element
+Every HTML page has a ``body`` element which we can make a style sheet for as any other element:
+
+```html
+<style>
+    body {
+        background-color: black;
+    }
+</style>
+```
+
+Now the entire page will be black (dark mode!)
+
+## Inherit Styles from the Body Element
+You can style your body element just like all other elements but the difference here is that other elements will inherit the style of the body element.
+
+For example: If we had a body background-color of black and a color of white, then the text within the body element will be white.
+
+```html
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<body>
+    <h1> Hello World </h1>
+</body>
+```
+
+Now the background of the page will be black and the color of the h1 text will be white.
+
+## Prioritize One Style Over the Other
+Sometimes elements will receive multiple styles. You will need to be able to prioritize which style the elements take on.
+
+Here is the order of precendence for styles (most important to least):
+1. inline style rules
+2. embedded styles
+3. external style sheet rules
+4. browser default rules
+
+If we have something like this: 
+
+```html
+<style>
+    body {
+        background-color: black;
+        font-family: monospace;
+        color: green;
+    }
+  
+  .pink-text {
+        color: pink;
+    }
+</style>
+
+<h1 class='pink-text'>Hello World!</h1>
+```
+
+The h1 element will have a pink font color.
+
+## Override Styles in Subsuquent CSS
+If an element has more than 1 class, the class that comes last in the style tag is the one that takes precendence. So if we had a blue-text style class written after the pink-text class, the blue-text will be the style that is followed:
+
+```html
+<style>
+    body {
+        background-color: black;
+        font-family: monospace;
+        color: green;
+    }
+  
+    .pink-text {
+        color: pink;
+    }
+
+    .blue-text {
+        color: blue;
+    }
+</style>
+
+<h1 class='pink-text blue-text'>Hello World!</h1>
+```
+
+The order in which the classes are within the HTML element does not matter i.e class='blue-text pink-text' would still produce blue colored h1 element.
+
+## Override Class Declarations by Styling ID Attributes
+If we were to style the same h1 element by using its tag, the style of the id style sheet will be used instead. For example:
+
+```html
+<style>
+    body {
+        background-color: black;
+        font-family: monospace;
+        color: green;
+    }
+  
+    .pink-text {
+        color: pink;
+    }
+
+    .blue-text {
+        color: blue;
+    }
+    #hello-word {
+        color: red;
+    }
+</style>
+
+<h1 id='hello-word' class='pink-text blue-text'>Hello World!</h1>
+```
+
+Now this will make the h1 element have a red font color.
+
+## Override Class Declarations with Inline Styles
+Inline styles have precedence over all other styles:
+
+```html
+<style>
+    body {
+        background-color: black;
+        font-family: monospace;
+        color: green;
+    }
+  
+    .pink-text {
+        color: pink;
+    }
+
+    .blue-text {
+        color: blue;
+    }
+    #hello-word {
+        color: red;
+    }
+</style>
+
+<h1 style="color: yellow;" id='hello-word' class='pink-text blue-text'>Hello World!</h1>
+```
+
+Now the h1 element will have a yellow font color.
+
+## Use Hex Code for Specific Colors
+Hexadecimals are base 16 numbers (16 distinct symbols). 
+We have the digits 0-9 and the letters A-F.
+Together you can use these to represent a number in hexadecimal form. 
+
+In CSS we use 6 hexadecimal digits to represent colors, two each for red, green, and blue. 
+For example: #000000 is black.
+
+Some hex codes can be shortened to just 3 digits like red: #F00
+
+## Use RGB Values to Color Elements
+RGB values are given by rgb(x, y, z) where 0 <= x, y, z <= 255. When x = y = z = 0, you have black and when x = y = z = 255, you have white.
+
+## Use CSS Variables to Change Several Elements at Once
+Variables can be used to change multiple values at once but only actually changing one thing.
+
+You declare variables using with the form ``--<variable-name>`` within style tags.
+For Example:
+
+```html
+<style>
+    .variable-storage {
+        --fox-face-color: white;
+        --fox-leg-color: red;
+    }
+</style>
+```
+
+To use these variables in other style classes you must use ``var(--<variable-name>)`` for the property which you wish to change. You can also add a fallback.
+
+```html
+<style>
+    .variable-storage {
+        --fox-face-color: white;
+        --fox-leg-color: red;
+    }
+
+    .fox-face {
+        color: var(--fox-face-color, blue)
+    }
+</style>
+```
+
+To make use of these variables we will often define them within :root style class. This makes them available yearly
+
+```html
+<style>
+    :root {
+        --fox-face-color: white;
+        --fox-leg-color: red;
+    }
+
+    .fox-face {
+        color: var(--fox-face-color, blue)
+    }
+</style>
+```
