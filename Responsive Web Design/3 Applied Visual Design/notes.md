@@ -146,3 +146,64 @@ Example:
 
 <h4> I'm not creative enough to think of new sentences. This sentence will have a font size of 25 pixels. </h4>
 ```
+
+## Add a box-shadow to a Card-like Element
+``box-shadow`` property applied one or more shadows to an element. It takes a total of 5 values:
+1. offset-x: how far to push the shadow horizontally from the element
+2. offset-y: how far to push the shadow vertically from the element
+3. blur-radius: what parts of the shadow are blurred
+4. spread-radius: How far the shadow is spread
+5. color: The color of the shadow
+
+Note that the ``blur-radius`` and ``spread-radius`` values are optional.
+
+Multiple box-shadows can be created by using commas to separate properties of each box-shadow element:
+
+```html
+<style>
+    .thumbnail {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+</style>
+```
+
+## Adjust the Opacity of an Element
+A value of 1 is opaque, 0 is fully transparent, 0.5 is half see-through.
+It is applied to the entire element.
+
+```html
+<style>
+    .links {
+        opacity: 1;
+    }
+</style>
+```
+
+## Use the text-transform Property to Make Text Uppercase
+This property is used to adjust the appearance of text. It's convenient to make sure text on webpages appear consistently without having to change the text content of the actual elements.
+``text-transform`` can take the following values:
+1. lowercase
+2. uppercase
+3. capitalize
+4. initial (the original value)
+5. inherit (use the text-transform value from the parent element)
+6. none (use the original text)
+
+## Font: size and weight
+Text elements have the ``font-size`` and ``font-weight`` properties. Font size is obvious but ``font-weight`` controls how thick and thin characters are in a section of text.
+
+## Set the line-height of Paragraphs
+This property changes the height of each line in a block of text ie the amount of vertical space that each line of text gets.
+
+## Adjust the Hover State of an Anchor Tag
+The styling of an anchor tag can be changed in its hover state using the ``:hover`` pseudo-class selector.
+
+```html
+<style>
+    a:hover {
+        color: red;
+    }
+</style>
+```
+
+Now every time an anchor tag is hovered over, it will change its color to red.
