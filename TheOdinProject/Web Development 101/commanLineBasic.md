@@ -103,3 +103,96 @@ $ ls -lr
 ```
 
 We can also use the ``-r`` flag with the other options to reverse their sort order.
+
+### 1.4 Links
+Links allow us to create an association from one file/directory to another. This is useful for maintaining a file system or having multiple versions of a file or directory, and not wanting to use disk space to store copies of those files.
+
+Links can be 'symbolic' or 'hard'.
+
+**Hard LInks**
+
+The ``ln`` command is used to create a linke between two files and by default, it will be a hard link.
+- Hard links create an identical copy of the linked file on disk which will get updated automatically as the source file gets updated.
+
+The following is the syntax of creating such a link:
+
+```shell
+$ ln <source_file>.<type> <target_file>.<type>
+```
+
+So if we wanted to hard link two files named a.txt and b.txt with a.txt being the source file it would go as:
+
+```shell
+$ ln a.txt b.txt
+```
+
+Note that hard links only work on the current file system and you cannot create a hard link to a file on a different system.
+
+If the source file gets deleted, the target file wil lcontinue to live as an independent file.
+
+**Forcing a Link**
+
+When the source file you are trying to link already exists you will get an error. In order to bypass this error we have to force a link using the ``-f`` flag.
+
+```shell
+$ ln -f a.txt b.txt
+```
+
+**Symbolic Links**
+
+We use these when we want to link directories but they can also be used for linking to files.
+
+Symbolic links can also link to files or directories on other file systems. To create a symbolic link we use the ``-s`` flag.
+
+```shell
+$ ln -s a.txt b.txt
+```
+
+### Change Directories
+We use the ``cd`` command to change directories. It takes one argument which is the path to the directory you want to navigate to.
+
+```shell
+$ cd ~/Documents
+```
+
+**Navigating Up**
+
+Sometimes when we are in a directory we want to go to the previous directory (move up to a parent directory). Instead of providing the whole path, we can use the special path ``..``
+
+```shell
+$ cd ..
+```
+
+**Navigating to Home Directory**
+
+When you want to navigate to your home directory you must call ``cd`` without any arguments.
+
+```shell
+$ cd
+$ pwd
+$ /Users/domi
+```
+
+### 1.6 Creating Directories
+To create a directory we use the ``mkdir`` command followed by the name of the directory we wish to create.
+
+```shell
+$ mkdir foo
+```
+
+**Create Intermediate Directories**
+
+The ``mkdir`` command allows us to create nested directories using the ``-p`` flag.
+
+```shell
+$ mkdir -p a/b/c
+```
+
+**Verbose Output**
+
+Adding the ``-v`` flag will print the results of the ``mkdir`` to the console:
+
+```shell
+$ mkdir -v a
+mkdir: created directory 'a'
+```
